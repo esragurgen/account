@@ -28,3 +28,5 @@ public class CustomerService {
         return customerDtoConverter.convertToCustomerDto(customer);
     }
 }
+
+// ctrl+shift+t ile test class oluşturuyoruz.
