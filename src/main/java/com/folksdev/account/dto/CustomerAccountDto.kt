@@ -8,7 +8,4 @@ data class CustomerAccountDto (
     val balance: BigDecimal? = BigDecimal.ZERO,
     val transactions: Set<TransactionDto>?,
     val creationDate: LocalDateTime?
-
-
-
 )
