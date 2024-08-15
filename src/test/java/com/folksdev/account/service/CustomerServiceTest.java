@@ -3,6 +3,7 @@
 // hangi tip metotların testi yazılmaz?
 package com.folksdev.account.service;
 
+import com.folksdev.account.dto.CustomerDto;
 import com.folksdev.account.dto.CustomerDtoConverter;
 import com.folksdev.account.exception.CustomerNotFoundException;
 import com.folksdev.account.model.Customer;
@@ -39,7 +40,25 @@ public class CustomerServiceTest {
     }
 
     @Test
-    public void testGetCustomerByID_whenCustomerIdExists_shouldReturnCustomer(){
+    public void testGetCustomerByID_whenCustomerIdExists_shouldReturnCustomer() {
+        Customer customer = new Customer("id", "name", "surname", Set.of());
+        CustomerDto customerDto = new CustomerDto("id", "name", "surname", Set.of());
+
+        Mockito.when(customerRepository.findById("id")).thenReturn(Optional.of(customer));
+        Mockito.when(converter.convertToCustomerDto(customer)).thenReturn(customerDto);
+        Customer result = service.findCustomerById("id");
+        assertEquals(result,
+                customerDto);
+    }
+    @Test
+        public void testGetCustomerByID_whenCustomerIdDoesNotExists_shouldThrowCustomerNotFoundException(){
+
+            Mockito.when(customerRepository.findById("id")).thenReturn(Optional.empty());
+            service.getCustomerById("id");
+            assertThrows(CustomerNotFoundException.class,
+                    () -> service.getCustomerById("id"));
+
+            Mockito.verifyNoInteractions(converter);
 
     }
 }
