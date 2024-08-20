@@ -13,7 +13,22 @@
 #ENTRYPOINT ["java", "-jar", "account-api.jar"]
 
 FROM openjdk:17
-WORKDIR Accounting-api
-COPY target/account-0.0.1-SNAPSHOT.jar Accounting-api.jar
+WORKDIR /account-api
+COPY target/account-0.0.1-SNAPSHOT.jar account-api.jar
 EXPOSE 9090
-ENTRYPOINT ["java", "-jar", "Accounting-api.jar"]
+ENTRYPOINT ["java", "-jar", "account-api.jar"]
+
+#Docker container çalıştırma
+# docker run --name account -d -p 9090:8080 accounting:1.0
+
+#Docker container oluşturma
+#docker build . -t accounting:1.0
+
+#Docker çalışan container ları gösterme
+#docker ps -a
+
+#Docker çalışan container ı kaldırma
+#docker  container rm -f {id}
+
+#Docker image larını gösterme
+#docker images
