@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/v1/account")
 
+// ctrl+shift+t ile test class generate edilebilir.
+
 public class AccountController {
     private final com.folksdev.account.service.AccountService accountService;
     public AccountController(com.folksdev.account.service.AccountService accountService){

@@ -1,3 +1,4 @@
+# Docker işletim sistemi olmadan sanallaştırma yapar.
 #FROM openjdk:17 AS build
 #
 #COPY pom.xml mvnw ./
