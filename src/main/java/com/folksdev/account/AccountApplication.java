@@ -29,11 +29,6 @@ public class AccountApplication implements CommandLineRunner {
         SpringApplication.run(AccountApplication.class, args);
     }
 
-    @Bean
-    public Clock clock() {
-        return Clock.systemUTC();
-    }
-
     @Override
     public void run(String...args) throws Exception{
         Customer customer = customerRepository.save(new Customer( "",  "Huseyin",  "Beller", new HashSet<>()));
