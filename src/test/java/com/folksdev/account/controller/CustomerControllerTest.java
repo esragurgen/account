@@ -2,10 +2,10 @@ package com.folksdev.account.controller;
 
 import com.folksdev.account.dto.CustomerDto;
 import com.folksdev.account.model.Customer;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
@@ -18,21 +18,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ActiveProfiles("test")
-
-@Nested
 @AutoConfigureMockMvc
-@SpringbootTest(webEnvironment = SpringbootTest.WebEnvironment.RANDOM_PORT, properties = {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = {
         "server-port=0",
         "command.line.runner.enabled=false"
 })
-
 @RunWith(SpringRunner.class)
 @DirtiesContext
-
-class CustomerControllerTest extends IntegrationTestSupport{
+class CustomerControllerTest extends IntegrationTestSupport {
 
     @Test
-    public void testGetCustomerById_whenCustomerIdExists_shouldReturnCustomerDto() throws Exception{
+    public void testGetCustomerById_whenCustomerIdExists_shouldReturnCustomerDto() throws Exception {
+
         Customer customer = customerRepository.save(generateCustomer());
         accountService.createAccount(generateCreateAccountRequest(customer.getId(), 100));
 
@@ -48,11 +45,10 @@ class CustomerControllerTest extends IntegrationTestSupport{
     }
 
     @Test
-    public void testGetCustomerById_whenCustomerIdDoesNotExist_shouldReturnHttpNotFound() throws Exception{
+    public void testGetCustomerById_whenCustomerIdDoesNotExist_shouldReturnHttpNotFound() throws Exception {
+
         this.mockMvc.perform(get(CUSTOMER_API_ENDPOINT + "non-exists-customer"))
                 .andExpect(status().isNotFound())
                 .andReturn();
-
     }
-
 }
