@@ -1,5 +1,6 @@
 package com.folksdev.account.controller;
 
+import com.folksdev.account.IntegrationTestSupport;
 import com.folksdev.account.dto.CustomerDto;
 import com.folksdev.account.model.Customer;
 import org.junit.jupiter.api.Test;

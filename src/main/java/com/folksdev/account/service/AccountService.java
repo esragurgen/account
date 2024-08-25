@@ -11,11 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.Clock;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.UUID;
-import java.util.function.Supplier;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 
 @Service
 public class AccountService {
@@ -23,7 +20,7 @@ public class AccountService {
     private final CustomerService customerService;
     private final AccountDtoConverter accountDtoConverter;
 
-    public AccountService(AccountRepository accountRepository, CustomerService customerService, AccountDtoConverter accountDtoConverter) {
+    public AccountService(AccountRepository accountRepository, CustomerService customerService, AccountDtoConverter accountDtoConverter, Clock clock) {
         this.accountRepository = accountRepository;
         this.customerService = customerService;
         this.accountDtoConverter = accountDtoConverter;

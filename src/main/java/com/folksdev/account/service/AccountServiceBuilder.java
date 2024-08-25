@@ -31,6 +31,6 @@ public class AccountServiceBuilder {
     }
 
     public AccountService createAccountService() {
-        return new AccountService(accountRepository, customerService, accountDtoConverter);
+        return new AccountService(accountRepository, customerService, accountDtoConverter, clock);
     }
 }
